@@ -1,0 +1,81 @@
+use college;
+create table teacher(
+	id int PRIMARY KEY,
+    name varchar(30) not null,
+    subject varchar(50),
+    salary int default 20000
+);
+
+SELECT * FROM teacher;
+INSERT INTO TEACHER
+VALUES
+(23,"ajay","math",50000),
+(47,"bharat","english",60000),
+(18,"chetan","chemistry",45000),
+(9,"divya","physics",75000);
+
+
+SELECT* FROM teacher
+WHERE SALARY>55000;
+
+ALTER TABLE TEACHER
+CHANGE COLUMN SALARY CTC INT default 20000;
+
+ALTER TABLE TEACHER
+ADD COLUMN CITY VARCHAR(50) DEFAULT "GURGAON";
+
+UPDATE TEACHER
+SET CTC=CTC+ 0.25*CTC;
+ 
+ALTER TABLE TEACHER
+DROP COLUMN CTC;
+
+/*----------------------*/
+
+create table info(
+	rollno int PRIMARY KEY,
+    name varchar(30) not null,
+    city varchar(50),
+    marks int 
+);
+
+INSERT INTO info
+VALUES
+("110","ADAM","DELHI",76),
+("108","BOB","MUMBAI",65),
+("124","CASEY","PUNE",94),
+("112","DUKE","PUNE",80);
+
+SELECT * FROM INFO;
+
+SELECT* FROM INFO
+WHERE MARKS>75;
+
+SELECT DISTINCT CITY FROM INFO;
+
+SELECT CITY
+FROM INFO
+GROUP BY CITY;
+
+SELECT CITY,MAX(MARKS)
+FROM INFO
+GROUP BY CITY;
+
+SELECT AVG(MARKS) FROM INFO;
+
+ALTER TABLE INFO
+ADD COLUMN GRADE VARCHAR(2);
+
+SET SQL_SAFE_UPDATES=0;
+
+UPDATE INFO
+SET GRADE='O' 
+WHERE MARKS>80;
+
+UPDATE INFO
+SET GRADE='A'
+WHERE MARKS  BETWEEN 70 AND 80;
+
+UPDATE INFO
+SET GRADE='B'
+WHERE MARKS <70;
